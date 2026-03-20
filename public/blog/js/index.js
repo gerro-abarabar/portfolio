@@ -20,8 +20,13 @@ function createPostElement(post) {
     postElement.classList.add("post");
 
     const title = document.createElement("h2");
-    title.textContent = post.title;
+    const link = document.createElement("a");
+    link.href = `/blog/post/?id=${post.id}`;
+    link.target="_blank"
+    link.textContent = post.title;
+    title.appendChild(link);
     postElement.appendChild(title);
+
 
     const thumbnail = document.createElement("img");
     thumbnail.src = post.thumbnail_image;
