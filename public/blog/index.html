@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+     <script src = "/admin.js"></script>
+    <script src = "js/get_posts.js"></script>
+    <script src = "js/post_posts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markdown-it/dist/markdown-it.min.js"></script>
+    <script src = "js/index.js"></script>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about">About Me</a>
+        <a href="/projects">Projects</a>
+        <a href="/contact">Contact</a>
+    </nav>
+    <quote> Sorry, I am not very skilled with front-end, so bear with me</quote>
+    
+    <h1>Steps to Redemption</h1>
+    <hr>
+    <p>A simple blog page to host my opinions and journeys in life. This includes philosophical advice, mathematics, music, and programming in general.</p>
+    <section id='add-posts' class = hidden>
+        <h2>Add a post:</h2>
+        <hr>
+        <form id="post-form">
+            <input type="text" id="title" name="title" placeholder="Title" required><br><br>
+            <textarea id="content" name="content" placeholder="Content (Markdown supported)" required></textarea><br><br>
+            <input type ="file" id="thumbnail" name="thumbnail" placeholder="Thumbnail" required><br><br>
+            <textarea name="site_key" id="site-key" placeholder="Site Key"></textarea><br><br>
+            <button type="submit">Add Post</button>
+        </form>
+    </section>
+    <section id="recent-posts">
+        <h2>Recent posts:</h2>
+        <hr>
+        <ul>
+            <p>None yet</p> <!-- Add your recent blog posts here -->
+        </ul>
+    </section>
+    
+
+    <footer>
+        <p>&copy; 2026 Gerro Abarabar - Portfolio. All rights reserved.</p>
+    </footer>
+</body>
+</html>
