@@ -25,10 +25,11 @@ export async function onRequestPost(context){
         );
     }
     const fileKey = `${Date.now()}-${file.name}`;
-        console.log("fileKey", fileKey);
-        await env.beronicous_r2.put(fileKey, file.stream(), {
-            httpMetadata: { contentType: file.type || "application/octet-stream" },
-        });
+    console.log("fileKey", fileKey);
+    console.log("R2 exists: ", env.beronicous_r2);
+    await env.beronicous_r2.put(fileKey, file.stream(), {
+        httpMetadata: { contentType: file.type || "application/octet-stream" },
+    });
     const head = await env.beronicous_r2.head(fileKey);
     if (!head || head.size === 0) {
         return new Response(
