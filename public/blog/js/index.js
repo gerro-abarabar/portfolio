@@ -1,6 +1,10 @@
 // Main script file
 
-const md = window.markdownit({ breaks: true });
+const md = window.markdownit({ 
+    breaks: true,
+    linkify: true,
+    html: true
+ });
 
 isAdmin().then(res => {
     console.log("Is admin:", res);
@@ -19,7 +23,7 @@ function createPostElement(post) {
     const postElement = document.createElement("div");
     postElement.classList.add("post");
 
-    const title = document.createElement("h2");
+    const title = document.createElement("h3");
     const link = document.createElement("a");
     link.href = `/blog/post/?id=${post.id}`;
     link.target="_blank"
@@ -27,19 +31,29 @@ function createPostElement(post) {
     title.appendChild(link);
     postElement.appendChild(title);
 
-
     const thumbnail = document.createElement("img");
+    thumbnail.classList.add("thumbnail");
     thumbnail.src = post.thumbnail_image;
     thumbnail.alt = "Thumbnail";
     postElement.appendChild(thumbnail);
+
+    const content = document.createElement("p");
+    content.innerHTML = md.render(post.content.slice(0, 200) + (post.content.length > 200 ? "..." : ""), { breaks: true, allowedTags: ['u', '*'] });
+    postElement.appendChild(content);
+
+    
+
+    
+
     return postElement;
 }
 
 function displayPosts(posts) {
-    recent_posts.innerHTML = ""; // Clear existing posts
+    recent_posts.innerHTML = "<h2>Recent posts:</h2><hr>"; // Clear existing posts
     posts.forEach((post) => {
         const postElement = createPostElement(post);
         recent_posts.appendChild(postElement);
+        recent_posts.appendChild(document.createElement("hr"));
     });
 }
 
@@ -52,6 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const title = document.getElementById("title").value;
         const content = document.getElementById("content").value;
         const thumbnail = document.getElementById("thumbnail").files[0];
+        console.log("Thumbnail: ", thumbnail)
         const site_key = document.getElementById("site-key").value;
 
         // const formData = new FormData();

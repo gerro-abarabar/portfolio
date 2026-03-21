@@ -22,4 +22,5 @@ getPost(new window.URLSearchParams(window.location.search).get("id")).then(res =
     console.log(res);
     document.getElementById("title").innerHTML = res.title;
     document.getElementById("content").innerHTML = md.render(res.content);
+    document.getElementById("thumbnail").src = res.thumbnail_image;
 })
