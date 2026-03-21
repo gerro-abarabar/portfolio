@@ -38,7 +38,7 @@ function createPostElement(post) {
     postElement.appendChild(thumbnail);
 
     const content = document.createElement("p");
-    content.innerHTML = md.render(post.content.slice(0, 200) + (post.content.length > 200 ? "..." : ""), { breaks: true, allowedTags: ['u', '*'] });
+    content.innerHTML = md.render(post.content.slice(0, 500) + (post.content.length > 500 ? "..." : ""), { breaks: true, allowedTags: ['u', '*'] });
     postElement.appendChild(content);
 
     
