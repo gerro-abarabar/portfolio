@@ -1,6 +1,10 @@
 // TODO: add an edit capability for the owner
 
-const md = window.markdownit();
+const md = window.markdownit({ 
+    breaks: true,
+    linkify: true,
+    html: true
+ });
 
 function getPost(id){
     return fetch("/api/blog/get_post", {
