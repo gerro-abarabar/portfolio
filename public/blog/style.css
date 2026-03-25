@@ -6,10 +6,10 @@
     max-height: 200px;
     object-fit: cover;
     float: right;
-
-    
 }
 
 .post{
     min-height: 300px;
+    align-items: center;
+    text-align: left;
 }
