@@ -1,37 +1,59 @@
-<!DOCTYPE html>
-<html lang="en"> <!-- Template to be filled with the javascript-->
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post</title>
-    <script src="https://cdn.jsdelivr.net/npm/markdown-it/dist/markdown-it.min.js"></script>
-    <script src = "js/index.js"></script>
-    <link rel="stylesheet" href="/style.css" />
-    <link rel="stylesheet" href="style.css">
-    
-</head>
-<body>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/about">About Me</a>
-        <a href="/projects">Projects</a>
-        <a href="/contact">Contact</a>
-    </nav>
-    <quote> Sorry, I am not very skilled with front-end, so bear with me</quote>
-    <br>
+<!doctype html>
+<html lang="en">
+    <!-- Template to be filled with the javascript-->
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Post</title>
+        <script src="https://cdn.jsdelivr.net/npm/markdown-it/dist/markdown-it.min.js"></script>
+        <script src="js/index.js" defer></script>
+        <script src="js/send_comment.js"></script>
+        <script src="js/get_comments.js"></script>
+        <link rel="stylesheet" href="/style.css" />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About Me</a>
+            <a href="/projects">Projects</a>
+            <a href="/contact">Contact</a>
+        </nav>
+        <quote>
+            Sorry, I am not very skilled with front-end, so bear with me
+        </quote>
+        <br />
 
-    <h1 id = title>Post</h1>
-    <hr>
-    <img id = thumbnail style="height: 200px;">
-    <br>
-    <p id = content>Post</p>
+        <h1 id="title">Post</h1>
+        <hr />
+        <img id="thumbnail" style="height: 200px" />
+        <br />
+        <p id="content">Post</p>
 
-    <hr>
-    <!-- TODO: ADD COMMENT SECTIONS-->
-    <!-- TODO: ADD EDIT BUTTON-->
-    <!-- TODO: ADD RATING SECTION-->
-    <footer>
-        <p>&copy; 2026 Gerro Abarabar - Portfolio. All rights reserved.</p>
-    </footer>
-</body>
+        <hr />
+        <div id="comment-send">
+            <form id="comment-form">
+                <input
+                    type="text"
+                    id="comment-author"
+                    placeholder="Your name"
+                    required
+                />
+                <textarea
+                    id="comment-content"
+                    placeholder="Write your comment here..."
+                    required
+                ></textarea>
+                <button type="submit">Post Comment</button>
+            </form>
+        </div>
+        <hr />
+        <div id="comment-section"></div>
+        <hr />
+        <!-- TODO: ADD EDIT BUTTON-->
+        <!-- TODO: ADD RATING SECTION-->
+        <footer>
+            <p>&copy; 2026 Gerro Abarabar - Portfolio. All rights reserved.</p>
+        </footer>
+    </body>
 </html>

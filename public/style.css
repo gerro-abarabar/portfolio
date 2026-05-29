@@ -6,10 +6,20 @@ body {
     background-color: #333;
 }
 * {
-    color:whitesmoke;
+    color: whitesmoke;
 }
 .welcome {
     margin: 2em 0;
+}
+textarea {
+    /*color: black;*/
+    background-color: #333;
+}
+input {
+    background-color: #333;
+}
+button {
+    background-color: #333;
 }
 ul {
     padding: 0;

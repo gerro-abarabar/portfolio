@@ -1,19 +1,15 @@
 .hidden {
-  display: none;
+    display: none;
 }
 
 .thumbnail {
-  max-height: 200px;
-  object-fit: cover;
-  float: right;
+    max-height: 200px;
+    object-fit: cover;
+    float: right;
 }
 
 .post {
-  min-height: 300px;
-  align-items: center;
-  text-align: left;
-}
-
-textarea {
-  color: black;
+    min-height: 300px;
+    align-items: center;
+    text-align: left;
 }
