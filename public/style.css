@@ -10,6 +10,11 @@ body {
 }
 .welcome {
     margin: 2em 0;
+    padding: 1em;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 textarea {
     /*color: black;*/
@@ -21,10 +26,6 @@ input {
 button {
     background-color: #333;
 }
-ul {
-    padding: 0;
-    list-style-type: none;
-}
 nav {
     margin: 2em 0;
 }
@@ -34,4 +35,26 @@ nav a {
 }
 nav a:hover {
     color: #0066cc;
+}
+
+img {
+    max-width: 20%;
+    display: inline-block;
+}
+
+#intro {
+    margin: 2em 0;
+    padding: 1em;
+    background-color: #333;
+    text-align: left;
+    stroke: whitesmoke;
+    width: 80%;
+    display: flex;
+    outline: 3px solid whitesmoke; /* Creates a stroke outside the border */
+}
+
+#intro-content {
+    margin: 1em;
+    padding: 0;
+    text-align: left;
 }
