@@ -38,10 +38,9 @@ nav a:hover {
 }
 
 img {
-    max-width: 20%;
+    height: 20%;
     display: inline-block;
 }
-
 #intro {
     margin: 2em 0;
     padding: 1em;
@@ -51,6 +50,16 @@ img {
     width: 80%;
     display: flex;
     outline: 3px solid whitesmoke; /* Creates a stroke outside the border */
+}
+
+@media (max-width: 600px) {
+    img {
+        height: auto;
+        width: 100%;
+    }
+    #intro {
+        display: block;
+    }
 }
 
 #intro-content {
