@@ -38,11 +38,14 @@ nav a:hover {
 }
 
 img {
-    height: 20%;
-    display: inline-block;
+    max-width: 20%;
+    height: auto;
+    max-height: 20vh;
+    margin: 1em;
+    outline: 3px solid whitesmoke;
 }
-#intro {
-    margin: 2em 0;
+.container {
+    margin: 2em;
     padding: 1em;
     background-color: #333;
     text-align: left;
@@ -52,18 +55,25 @@ img {
     outline: 3px solid whitesmoke; /* Creates a stroke outside the border */
 }
 
-@media (max-width: 600px) {
-    img {
-        height: auto;
-        width: 100%;
-    }
-    #intro {
-        display: block;
-    }
+.container-text {
+    margin: 1em;
+    padding: 2em;
+    text-align: left;
+    background-color: #333;
+    text-align: left;
+    stroke: whitesmoke;
+    width: 80%;
+    outline: 3px solid whitesmoke; /* Creates a stroke outside the border */
+    box-shadow: 0 0 10px black; /* Adds a glow effect around the container */
 }
 
-#intro-content {
-    margin: 1em;
-    padding: 0;
-    text-align: left;
+@media (max-width: 600px) {
+    img {
+        max-width: 100%;
+    }
+    .container {
+        display: block;
+        align-items: center;
+        text-align: center;
+    }
 }
