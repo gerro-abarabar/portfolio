@@ -10,6 +10,16 @@
 
 .post {
     min-height: 300px;
+    width: 100%; /* Forces all posts to match the parent's width */
+    box-sizing: border-box; /* Prevents padding from making the box overflow */
     align-items: center;
     text-align: left;
+}
+
+.container {
+    display: flex;
+    flex-direction: column; /* Stack them vertically instead of using block */
+    align-items: center;
+    text-align: center;
+    margin: 1em auto;
 }

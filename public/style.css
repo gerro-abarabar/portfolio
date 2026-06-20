@@ -3,28 +3,32 @@ body {
     margin: 0;
     padding: 20px;
     text-align: center;
-    background-color: #333;
+    background-color: #24273a;
 }
 * {
-    color: whitesmoke;
+    color: #cad3f5;
 }
 .welcome {
     margin: 2em 0;
     padding: 1em;
-    background-color: #333;
-    display: flex;
+    background-color: #24273a;
     justify-content: center;
     align-items: center;
 }
 textarea {
     /*color: black;*/
-    background-color: #333;
+    background-color: #5b6078;
 }
 input {
-    background-color: #333;
+    background-color: #5b6078;
+}
+hr {
+    border: 0;
+    height: 3px; /* Adjust thickness */
+    background-color: #939ab7; /* Change color here */
 }
 button {
-    background-color: #333;
+    background-color: #5b6078;
 }
 nav {
     margin: 2em 0;
@@ -34,37 +38,52 @@ nav a {
     text-decoration: none;
 }
 nav a:hover {
-    color: #0066cc;
+    color: #8aadf4;
 }
 
 img {
-    max-width: 20%;
-    height: auto;
-    max-height: 20vh;
+    width: 200px; /* Give the image a fixed width so it doesn't distort */
+    height: 200px;
+    object-fit: cover; /* Keeps aspect ratio clean if it's a square profile pic */
+    border-radius: 20%; /* Optional: Makes it a clean profile circle */
     margin: 1em;
-    outline: 3px solid whitesmoke;
+    outline: 3px solid #b7bdf8;
 }
 .container {
-    margin: 2em;
+    margin: 2em auto; /* "auto" centers the whole container on the page */
     padding: 1em;
-    background-color: #333;
-    text-align: left;
-    stroke: whitesmoke;
-    width: 80%;
+    background-color: #363a4f;
+    width: 90%; /* Increased slightly for better mobile breathing room */
+    max-width: 800px; /* Keeps it from getting too wide on huge monitors */
     display: flex;
-    outline: 3px solid whitesmoke; /* Creates a stroke outside the border */
+    align-items: center; /* Vertically aligns image and text perfectly */
+    outline: 3px solid whitesmoke;
 }
 
 .container-text {
     margin: 1em;
-    padding: 2em;
+    padding: 1em;
+    flex: 1;
     text-align: left;
-    background-color: #333;
     text-align: left;
-    stroke: whitesmoke;
-    width: 80%;
-    outline: 3px solid whitesmoke; /* Creates a stroke outside the border */
+    /*width: 80%;*/
+    outline: 3px solid #b7bdf8; /* Creates a stroke outside the border */
     box-shadow: 0 0 10px black; /* Adds a glow effect around the container */
+}
+
+.welcome-nav a {
+    margin: 0.5em 1em; /* Adjusted to handle vertical spacing if they stack */
+    text-decoration: none;
+    color: whitesmoke;
+    padding: 0.5em 1.2em;
+    outline: 3px solid #b7bdf8;
+    display: inline-block; /* Helps the browser calculate padding and margins correctly */
+    white-space: nowrap; /* Forces "Tutoring Portfolio" to stay completely on one line */
+    border-radius: 50px; /* Gives a perfect pill-shape that doesn't distort with text length */
+}
+
+.container-text nav {
+    text-align: center;
 }
 
 @media (max-width: 600px) {
@@ -72,8 +91,24 @@ img {
         max-width: 100%;
     }
     .container {
-        display: block;
+        display: flex;
+        flex-direction: column; /* Stack them vertically instead of using block */
         align-items: center;
         text-align: center;
+        margin: 1em auto;
+    }
+    body {
+        padding: 10px;
+    }
+    .container-text {
+        margin: 1em 0 0 0; /* Clear side margins on mobile so it fits nicely */
+        width: 100%; /* Spans full width of parent container on mobile */
+        box-sizing: border-box; /* Ensures padding doesn't break the width */
+    }
+    .welcome-nav {
+        display: flex;
+        flex-wrap: wrap; /* Allows buttons to drop nicely to the next line instead of breaking */
+        justify-content: center;
+        gap: 1em 0; /* Keeps spacing even if they wrap */
     }
 }
