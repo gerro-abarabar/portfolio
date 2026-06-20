@@ -4,8 +4,11 @@
 
 .thumbnail {
     max-height: 200px;
-    object-fit: cover;
+    width: auto; /* Lets the width scale naturally with the height */
+    object-fit: initial; /* Disables the crop/cover behavior */
+    border-radius: 0; /* Removes any inherited smoothed or rounded corners */
     float: right;
+    margin-left: 1em; /* Adds a little breathing room between the text and the image */
 }
 
 .post {
