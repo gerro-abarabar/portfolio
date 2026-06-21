@@ -4,3 +4,5 @@ node_modules
 wrangler.toml
 .dev.vars
 .sql
+backup.sql
+r2-bucket
