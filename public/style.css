@@ -48,6 +48,11 @@ img {
     border-radius: 20%; /* Optional: Makes it a clean profile circle */
     margin: 1em;
     outline: 3px solid #b7bdf8;
+    cursor: pointer;
+}
+
+img:hover {
+    box-shadow: 0 0 20px #b7bdf8;
 }
 .container {
     margin: 2em auto; /* "auto" centers the whole container on the page */
@@ -58,6 +63,73 @@ img {
     display: flex;
     align-items: center; /* Vertically aligns image and text perfectly */
     outline: 3px solid whitesmoke;
+}
+
+/* The background overlay */
+.lightbox {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9); /* Darker background for focus */
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+}
+
+/* Add a class to handle the fade-in via JS */
+.lightbox.active {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox img {
+    cursor: auto;
+    height: 80%;
+    width: auto;
+}
+
+.lightbox img:hover {
+    box-shadow: 0 0 0px #b7bdf8;
+}
+
+/* The actual image with zoom effect */
+.lightbox-content {
+    /* This ensures it scales up significantly, up to 95% of the screen */
+    max-width: 95%;
+    max-height: 95%;
+    object-fit: contain;
+
+    /* Zoom animation */
+    transform: scale(0.9);
+    transition: transform 0.25s ease-in-out;
+
+    border-radius: 4px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+/* Zoom into full scale when active */
+.lightbox.active .lightbox-content {
+    transform: scale(1);
+}
+
+/* The close button */
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000; /* Stays above the image */
+}
+
+.lightbox-close:hover {
+    color: #bbb;
 }
 
 .container-text {
