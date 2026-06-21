@@ -11,6 +11,12 @@
     margin-left: 1em; /* Adds a little breathing room between the text and the image */
 }
 
+img {
+    width: auto; /* Lets the width scale naturally with the height */
+    object-fit: initial; /* Disables the crop/cover behavior */
+    border-radius: 0; /* Removes any inherited smoothed or rounded corners */
+}
+
 .post {
     min-height: 300px;
     width: 100%; /* Forces all posts to match the parent's width */
