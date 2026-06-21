@@ -23,12 +23,14 @@
             <a href="/contact">Contact</a>
         </nav>
         <br />
-
-        <h1 id="title">Post</h1>
-        <hr />
-        <img id="thumbnail" style="height: 200px" />
-        <br />
-        <p id="content">Post</p>
+        <div class="container">
+            <h1 id="title">Post</h1>
+            <img id="thumbnail" style="height: 200px" />
+            <br />
+            <div class="container-text">
+                <p id="content">Post</p>
+            </div>
+        </div>
 
         <hr />
         <div id="comment-send">
@@ -48,8 +50,9 @@
             </form>
         </div>
         <hr />
-        <div id="comment-section">
+        <div id="comment-container" class="container">
             <h2>Comments:</h2>
+            <div id="comment-section"></div>
         </div>
         <hr />
         <!-- TODO: ADD EDIT BUTTON-->

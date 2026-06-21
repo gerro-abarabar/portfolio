@@ -78,6 +78,7 @@ function new_comment(comment_author, comment_content, id) {
   const section = document.createElement("section");
   section.id = id;
   section.classList.add("comment");
+  section.classList.add("container-text");
 
   const content = document.createElement("p");
   content.textContent = comment_content;
