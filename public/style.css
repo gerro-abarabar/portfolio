@@ -42,8 +42,7 @@ input {
 hr {
     border: 0;
     height: 3px; /* Adjust thickness */
-    background-color: #363a4f; /* Change color here */
-    margin: 4em 3em;
+    background-color: #939ab7; /* Change color here */
 }
 button {
     background-color: #5b6078;

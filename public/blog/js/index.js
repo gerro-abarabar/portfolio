@@ -55,9 +55,6 @@ function displayPosts(posts) {
     i++;
     const postElement = createPostElement(post);
     recent_posts.appendChild(postElement);
-    if (i < length) {
-      recent_posts.appendChild(document.createElement("hr"));
-    }
   });
 }
 
