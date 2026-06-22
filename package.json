@@ -1,5 +1,5 @@
 {
-  "dependencies": {
-    "wrangler": "https://pkg.pr.new/wrangler@14065"
+  "devDependencies": {
+    "wrangler": "^4.103.0"
   }
 }

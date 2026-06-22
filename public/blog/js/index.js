@@ -6,7 +6,7 @@ const md = window.markdownit({
   html: true,
 });
 
-isAdmin().then((res) => {
+checkAdminStatus().then((res) => {
   console.log("Is admin:", res);
   if (res) {
     document.getElementById("add-posts").classList.remove("hidden");

@@ -5,7 +5,6 @@ async function checkAdminStatus() {
 
   console.log("Getting admin param:", admin_param);
 
-  // Default values if no parameter is in the URL
   if (!admin_param) {
     return { key: null, isAdmin: false };
   }
@@ -14,7 +13,6 @@ async function checkAdminStatus() {
     const res = await fetch(`/api/isAdmin?admin=${admin_param}`);
     const data = await res.json();
 
-    // Return BOTH pieces of data grouped together in an object
     return {
       key: admin_param,
       isAdmin: data.isAdmin,
@@ -25,57 +23,63 @@ async function checkAdminStatus() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+// Global variable so appendParamToLink can read it later
+let globalAdminKey = null;
+
+function appendParamToLink(e) {
+  const link = e.target.closest("a");
+
+  if (link && link.href && globalAdminKey) {
+    if (!link.dataset.paramAdded) {
+      try {
+        const targetUrl = new URL(link.href);
+        targetUrl.searchParams.set("admin", globalAdminKey);
+
+        link.href = targetUrl.toString();
+        link.dataset.paramAdded = "true";
+      } catch (err) {
+        console.error("Invalid URL structure", err);
+      }
+    }
+  }
+}
+
+// Put setup inside DOMContentLoaded so everything executes in order
+document.addEventListener("DOMContentLoaded", async () => {
+  // 1. Initialize Admin Setup (Using await properly)
+  const admin_data = await checkAdminStatus();
+
+  if (admin_data.isAdmin) {
+    globalAdminKey = admin_data.key; // Store it globally for the event handlers
+    document.body.addEventListener("mouseover", appendParamToLink);
+    document.body.addEventListener("touchstart", appendParamToLink);
+  }
+
+  // 2. Lightbox Setup (Unchanged)
   const lightbox = document.getElementById("imageLightbox");
   const lightboxImg = document.getElementById("lightboxImg");
   const closeBtn = document.querySelector(".lightbox-close");
 
-  // 1. OPEN LIGHTBOX WITH ZOOM (Updated to support late-loading D1 images)
   document.body.addEventListener("click", async (e) => {
-    // Check if the clicked element is an image
     if (e.target.tagName === "IMG") {
-      // Safety check: ignore clicks on the lightbox image itself
       if (e.target.id === "lightboxImg") return;
 
-      // Set the image source
       lightboxImg.src = e.target.src;
-
-      // First make it flex so it exists in the DOM layout
       lightbox.style.display = "flex";
 
-      // Use a tiny timeout so the browser registers the display change
-      // before applying the zoom/fade animation class
       setTimeout(() => {
         lightbox.classList.add("active");
       }, 10);
     }
-    // For adding admin param to links
-    const link = e.target.closest("a");
-    const adminData = await checkAdminStatus();
-
-    // Now you have access to both variables from that single function call
-    const admin_key = adminData.key; // e.g., "secret-token-123"
-    const is_admin = adminData.isAdmin;
-    if (link && link.href && is_admin) {
-      e.preventDefault();
-      const targetUrl = new URL(link.href);
-
-      targetUrl.searchParams.set("admin", admin_key);
-
-      window.location.href = targetUrl.toString();
-    }
   });
 
-  // 2. CLOSE LIGHTBOX SAFELY (Keeps the smooth fade-out delay)
   function closeLightbox() {
     lightbox.classList.remove("active");
-    // Wait for the fade-out transition to finish before hiding display completely
     setTimeout(() => {
       lightbox.style.display = "none";
     }, 250);
   }
 
-  // Close triggers
   closeBtn.addEventListener("click", closeLightbox);
 
   lightbox.addEventListener("click", (e) => {
