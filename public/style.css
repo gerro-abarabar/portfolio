@@ -62,7 +62,7 @@ img:hover {
     max-width: 800px; /* Keeps it from getting too wide on huge monitors */
     display: flex;
     align-items: center; /* Vertically aligns image and text perfectly */
-    outline: 3px solid whitesmoke;
+    outline: 3px solid #b7bdf8;
 }
 
 /* The background overlay */
@@ -141,6 +141,7 @@ img:hover {
     /*width: 80%;*/
     outline: 3px solid #b7bdf8; /* Creates a stroke outside the border */
     box-shadow: 0 0 10px black; /* Adds a glow effect around the container */
+    background-color: #494d64;
 }
 
 .welcome-nav a {
