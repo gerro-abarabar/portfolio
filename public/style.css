@@ -8,6 +8,17 @@ body {
 * {
     color: #cad3f5;
 }
+h1 {
+    font-family: "Times New Roman", Times, serif;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+h2,
+h3,
+h4 {
+    font-family: "Montserrat", sans-serif;
+}
 .welcome {
     margin: 2em 0;
     padding: 1em;
@@ -21,11 +32,18 @@ textarea {
 }
 input {
     background-color: #5b6078;
+    color: #cad3f5;
 }
+::placeholder {
+    color: #a5adcb;
+    opacity: 1; /* Firefox */
+}
+
 hr {
     border: 0;
     height: 3px; /* Adjust thickness */
-    background-color: #939ab7; /* Change color here */
+    background-color: #363a4f; /* Change color here */
+    margin: 4em 3em;
 }
 button {
     background-color: #5b6078;
