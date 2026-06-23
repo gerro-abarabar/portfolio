@@ -1,10 +1,81 @@
 // TODO: add an edit capability for the owner
-
+var post_data;
 const md = window.markdownit({
   breaks: true,
   linkify: true,
   html: true,
 });
+
+function edit_post() {
+  const content = document.getElementById("content");
+  content.classList.add("hidden");
+  const edit_form = document.getElementById("edit-form");
+  edit_form.classList.remove("hidden");
+
+  const editable_title = document.getElementById("edit-title");
+  editable_title.value = post_data.title;
+
+  const editable_content = document.getElementById("edit-content");
+  editable_content.value = post_data.content;
+
+  const submit_post = document.getElementById("submit-edit-post");
+  submit_post.addEventListener("click", (e) => {
+    e.preventDefault();
+    fetch("/api/blog/edit_post", {
+      method: "POST",
+      body: JSON.stringify({
+        title: editable_title.value,
+        content: editable_content.value,
+        id: post_data.id,
+        admin_key: admin_data.key,
+      }),
+    })
+      .then((data) => data.json())
+      .then((data) => {
+        closeEditPost(admin_data);
+        set_post(data.data);
+        console.log("It workss");
+        console.log(data);
+      });
+  });
+}
+
+function closeEditPost() {
+  const edit_form = document.getElementById("edit-form");
+  edit_form.classList.add("hidden");
+
+  const edit_container = document.getElementById("edit-container");
+  edit_container.classList.add("hidden");
+
+  const content = document.getElementById("content");
+  content.classList.remove("hidden");
+
+  check_if_admin(admin_data);
+}
+
+function addEditButton() {
+  const edit_container = document.getElementById("edit-container");
+  edit_container.classList.remove("hidden");
+  const edit_button = document.getElementById("edit-post");
+  edit_button.addEventListener("click", edit_post);
+}
+
+var admin_data;
+
+function check_if_admin(data) {
+  if (data.isAdmin) {
+    addEditButton();
+    admin_data = data;
+  }
+}
+
+checkAdminStatus().then(check_if_admin);
+
+function set_post(post) {
+  document.getElementById("title").innerHTML = post.title;
+  document.getElementById("content").innerHTML = md.render(post.content);
+  document.getElementById("thumbnail").src = post.thumbnail_image;
+}
 
 function getPost(id) {
   return fetch("/api/blog/get_post", {
@@ -26,10 +97,8 @@ const blog_id = new window.URLSearchParams(window.location.search).get("id");
 getPost(blog_id)
   .then((res) => res[0])
   .then((res) => {
-    console.log(res);
-    document.getElementById("title").innerHTML = res.title;
-    document.getElementById("content").innerHTML = md.render(res.content);
-    document.getElementById("thumbnail").src = res.thumbnail_image;
+    post_data = res;
+    set_post(res);
   });
 const comment_form = document.querySelector("#comment-form");
 

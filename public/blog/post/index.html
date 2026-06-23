@@ -29,7 +29,22 @@
             <h2 id="title">Post</h2>
             <img class="thumbnail" id="thumbnail" />
             <br />
-            <div class="container-text">
+            <div class="container-text" id="content-container">
+                <div class="hidden" id="edit-container">
+                    <button id="edit-post">Edit Post</button>
+                    <form id="edit-form" class="hidden">
+                        <label for="edit-title">Title:</label>
+                        <input type="text" value="" id="edit-title" />
+                        <br />
+                        <label for="edit-content">Content:</label>
+                        <textarea id="edit-content"></textarea>
+                        <input
+                            type="submit"
+                            value="Submit"
+                            id="submit-edit-post"
+                        />
+                    </form>
+                </div>
                 <p id="content">Post</p>
             </div>
         </div>
@@ -57,7 +72,7 @@
             <div id="comment-section"></div>
         </div>
         <hr />
-        <!-- TODO: ADD EDIT BUTTON-->
+
         <!-- TODO: ADD RATING SECTION-->
         <footer>
             <p>&copy; 2026 Gerro Abarabar - Portfolio. All rights reserved.</p>

@@ -29,6 +29,7 @@ h4 {
 textarea {
     /*color: black;*/
     background-color: #5b6078;
+    field-sizing: content;
 }
 input {
     background-color: #5b6078;
