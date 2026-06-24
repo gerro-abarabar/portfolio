@@ -73,6 +73,7 @@ checkAdminStatus().then(check_if_admin);
 
 function set_post(post) {
   document.getElementById("title").innerHTML = post.title;
+  document.title = post.title + " | Steps to Redemption";
   document.getElementById("content").innerHTML = md.render(post.content);
   document.getElementById("thumbnail").src = post.thumbnail_image;
 }
