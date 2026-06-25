@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Puritan:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -11,8 +13,10 @@ body {
 h1 {
     font-family: "Times New Roman", Times, serif;
 }
-
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+p {
+    font-family: "Puritan", sans-serif;
+    font-size: 1.3em;
+}
 
 h2,
 h3,
