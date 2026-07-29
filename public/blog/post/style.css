@@ -1,12 +1,16 @@
 #content {
     margin: 1em 4em;
     text-align: left;
+    font-size: 1em;
+}
+
+p {
     font-size: 1.1em;
 }
 
 #content ol,
 ul {
-    font-size: 1.3em;
+    font-size: 1em;
 }
 
 #comment-form {
