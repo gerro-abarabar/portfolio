@@ -71,11 +71,35 @@ function check_if_admin(data) {
 
 checkAdminStatus().then(check_if_admin);
 
+function format_date(date) {
+  // Only accepts ISO Strings
+  // Source - https://stackoverflow.com/a/25159403
+  // Posted by Mritunjay, modified by community. See post 'Timeline' for change history
+  // Retrieved 2026-07-30, License - CC BY-SA 3.0
+
+  date = new Date(date);
+  return (
+    date.toLocaleString("default", { month: "long" }) +
+    " " +
+    date.getDate() +
+    ", " +
+    date.getFullYear()
+  ); //prints expected format.
+}
+
 function set_post(post) {
-  document.getElementById("title").innerHTML = post.title;
-  document.title = post.title + " | Steps to Redemption";
-  document.getElementById("content").innerHTML = md.render(post.content);
-  document.getElementById("thumbnail").src = post.thumbnail_image;
+  const { title, content, thumbnail_image, date_created, date_modified } = post;
+  document.getElementById("title").innerHTML = title;
+  document.title = title + " | Steps to Redemption";
+  document.getElementById("content").innerHTML = md.render(content);
+  document.getElementById("thumbnail").src = thumbnail_image;
+
+  document.getElementById("created-at").textContent = format_date(date_created);
+  if (date_created != date_modified) {
+    document.getElementById("modified-element").style.display = "block";
+    document.getElementById("modified-at").textContent =
+      format_date(date_modified);
+  }
 }
 
 function getPost(id) {
@@ -90,7 +114,6 @@ function getPost(id) {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log("Post status:", data.success);
       return data;
     });
 }
